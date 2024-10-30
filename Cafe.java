@@ -15,30 +15,26 @@ public class Cafe extends Building{
 
     }
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
-        System.out.println("Preparing your order....");
-        if ((this.nCoffeeOunces-=size)<=0){
-            System.out.println("Sorry we don't have enough coffee grounds for your order");
-            this.restock(20, 5, 5, 1);
-        }
-        else if((this.nSugarPackets-=nSugarPackets)<=0){
-            System.out.println("Sorry we don't have enough sugar for your order");
-            this.restock(5, 20, 5, 1);
-        }
-        else if((this.nCreams-=nCreams)<=0){
-            System.out.println("Sorry we don't have enough cream for your order");
-            this.restock(5, 5, 20, 1);
-        }
-        else if ((this.nCups-=1)<=0){
-            System.out.println("Sorry we don't have enough cups for your order");
-            this.restock(5, 5, 5, 5);
-        }
-        else{
-            this.nCoffeeOunces-=size;
-            this.nSugarPackets-=nSugarPackets;
-            this.nCreams-=nCreams;
-            this.nCups-=1;
-            System.out.println("Here's your order! One size "+size+" coffee with "+nSugarPackets+" sugars and "+nCreams+" creams");}
-    }
+        boolean supplies=false;
+        while (supplies==false){
+            System.out.println("Preparing your order....");
+            if ((this.nCoffeeOunces-=size)>=0){
+                if ((this.nSugarPackets-=nSugarPackets)>=0){
+                    if ((this.nCreams-=nCreams)<=0){
+                        if ((this.nCups-=1)<=0){
+                            supplies= true;
+                        }
+                    }
+                }
+            }}
+            else{
+                supplies=false;}
+        this.nCoffeeOunces-=size;
+        this.nSugarPackets-=nSugarPackets;
+        this.nCreams-=nCreams;
+        this.nCups-=1;
+        System.out.println("Here's your order! One size "+size+" coffee with "+nSugarPackets+" sugars and "+nCreams+" creams");
+            }
 
     private void restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups){
         System.out.println("Restocking...");
