@@ -2,11 +2,37 @@ import java.util.Hashtable;
 public class Library extends Building{
     private Hashtable<String, Boolean> collection;
 
+
+    //Constructor
+
+    /**
+     * Constructs an instance of the Library class
+     * @param name name of house
+     * @param address address of house
+     * @param nFloors number of floors of house
+     */
     public Library(String name, String address, int nFloors) {
       super(name, address, nFloors);
       System.out.println("You have built a library: 📖");
       this.collection= new Hashtable<>();
     }
+
+    //Getters
+
+    public boolean containsTitle(String title){
+      return (collection.containsKey(title));
+    }
+
+    public boolean isAvailable(String title){
+      if (collection.containsKey(title)==true){
+        return collection.get(title);}
+      else{ return false;}
+    }
+
+
+
+    //Methods
+
 
     public void addTitle(String title){
       if (collection.containsKey(title)==false){
@@ -34,15 +60,6 @@ public class Library extends Building{
           collection.replace(title, false, true);}}
     }
 
-    public boolean containsTitle(String title){
-      return (collection.containsKey(title));
-    }
-
-    public boolean isAvailable(String title){
-      if (collection.containsKey(title)==true){
-        return collection.get(title);}
-      else{ return false;}
-    }
 
     public void printCollection(){
       System.out.println("\n");
