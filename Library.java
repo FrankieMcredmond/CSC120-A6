@@ -31,15 +31,25 @@ public class Library extends Building{
 
 
 
-    //Methods
+    //Setters
 
-
+    /**
+     * adds title to Library collection
+     * @param title
+     */
     public void addTitle(String title){
       if (collection.containsKey(title)==false){
         collection.put(title, true);}
       else {
         System.out.println("title already found in collection");}}
 
+
+    /**
+     * Removes title from Library collection
+     * @param title
+     * @return title has been removed
+     * or title is not in collection
+     */  
     public String removeTitle(String title){
       if (collection.containsKey(title)==true){
         collection.remove(title);
@@ -48,19 +58,42 @@ public class Library extends Building{
         return("title not found in collection");}
     }
 
+
+    /**
+     * sets a book value as unavailable/false
+     * @param title
+     */  
     public void checkOut(String title){
       if (collection.containsKey(title)==true){
         if (collection.get(title)==true){
-          collection.replace(title, true, false);}}
+          collection.replace(title, true, false);}
+        else{
+        System.out.println("sorry "+title+" is not available");}}
+      else {System.out.println("sorry "+title+" is not in the collection");}
     }
 
+    /**
+     * sets a book value as available/true
+     * @param title
+     */  
     public void returnBook(String title){
       if (collection.containsKey(title)==true){
         if (collection.get(title)==false){
-          collection.replace(title, false, true);}}
+          collection.replace(title, false, true);}
+          else{
+            System.out.println("sorry "+title+" is already returned");}}
+      else{
+        System.out.println("sorry "+title+" is not in the collection");}
     }
 
+    // Methods
 
+
+    /**
+     * prints each key of collection hashmap and it's value
+     * true= available
+     * false= unavailable
+     */ 
     public void printCollection(){
       System.out.println("\n");
       System.out.println("Welcome to "+this.name+"! Here are the books in our Collection!\n");
@@ -73,6 +106,10 @@ public class Library extends Building{
         System.out.println("\n");
         });
     }
+
+
+
+
     public static void main(String[] args) {
       Library Neilson= new Library("Neilson", "7 Neilson Drive, Northampton, MA 01063", 4);
       System.out.println(Neilson);
